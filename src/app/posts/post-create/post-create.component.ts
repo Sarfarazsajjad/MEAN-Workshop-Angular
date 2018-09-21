@@ -6,9 +6,10 @@ import { Component } from "@angular/core";
 })
 export class PostCreateComponent{
   newPost = "No Content";
+  enteredValue;
 
   onSavePost(postInput: HTMLTextAreaElement){
     postInput
-    this.newPost = postInput.value;
+    this.newPost = this.enteredValue;
   }
 }
