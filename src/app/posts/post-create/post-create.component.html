@@ -1,7 +1,15 @@
-<h2>Post create component</h2>
-<!-- binding element property -->
-<textarea cols="30" rows="6" [(ngModel)]="enteredValue"></textarea>
-<hr>
-<button (click)="onSavePost()">Save</button>
+<mat-card>
+  <h2>Post create component</h2>
+  <!-- binding element property -->
+  <mat-form-field>
+
+    <textarea matInput cols="30" rows="6" [(ngModel)]="enteredValue"></textarea>
+  </mat-form-field>
+  <div>
+    <button mat-raised-button color="primary" (click)="onSavePost()">Save</button>
+  </div>
+  
+  
+</mat-card>
 <!-- string interpolation -->
 {{newPost}}
