@@ -5,7 +5,9 @@ import { Component } from "@angular/core";
   templateUrl:"./post-create.component.html"
 })
 export class PostCreateComponent{
+  newPost = "No Content";
+
   onSavePost(){
-    console.log('save post');
+    this.newPost = "User's Post";
   }
 }
