@@ -5,5 +5,7 @@ import { Component } from "@angular/core";
   templateUrl:"./post-create.component.html"
 })
 export class PostCreateComponent{
-
+  onSavePost(){
+    console.log('save post');
+  }
 }
