@@ -1,7 +1,23 @@
 <h2>Post create component</h2>
 <!-- binding element property -->
-<textarea cols="30" rows="6" [value]="newPost"></textarea>
+<!-- Template reference variable  -->
+<!-- https://angular.io/guide/template-syntax#template-reference-variables--var- -->
+<textarea cols="30" rows="6" [value]="newPost" #postInput></textarea>
 <hr>
-<button (click)="onSavePost()">Save</button>
+<button (click)="onSavePost(postInput)">Save</button>
 <!-- string interpolation -->
 {{newPost}}
+
+<!-- 
+# - variable declaration
+
+() - event binding
+
+[] - property binding
+
+[()] - two-way property binding
+
+{{ }} - interpolation
+
+* - structural directives 
+-->
