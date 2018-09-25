@@ -1,16 +1,22 @@
-import { Component } from "@angular/core";
+import { Component, Output, EventEmitter } from "@angular/core";
+
 
 @Component({
-  selector : "app-post-create",
-  templateUrl:"./post-create.component.html",
-  styleUrls:["./post-create.component.css"]
+  selector: "app-post-create",
+  templateUrl: "./post-create.component.html",
+  styleUrls: ["./post-create.component.css"]
 })
-export class PostCreateComponent{
-  newPost = "No Content";
-  enteredValue;
+export class PostCreateComponent {
+  enteredTitle;
+  enteredContent;
 
-  onSavePost(postInput: HTMLTextAreaElement){
-    postInput
-    this.newPost = this.enteredValue;
+  @Output() postCreated = new EventEmitter();
+  onSavePost() {
+    const post = {
+      title: this.enteredTitle,
+      content: this.enteredContent
+    }
+
+    this.postCreated.emit(post);
   }
 }
