@@ -8,6 +8,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 // ! app's custom components
 import { PostCreateComponent } from './posts/post-create/post-create.component';
 import { HeaderComponent } from './header/header.component'
+import { PostListComponent } from './posts/post-list/post-list.component';
 
 // ! Angular Material components
 import {MatFormFieldModule} from '@angular/material/form-field';
@@ -15,6 +16,7 @@ import {MatInputModule} from '@angular/material/input';
 import {MatCardModule} from '@angular/material/card';
 import {MatButtonModule} from '@angular/material/button';
 import {MatToolbarModule} from '@angular/material/toolbar';
+import {MatExpansionModule} from '@angular/material/expansion'
 
 
 
@@ -22,7 +24,8 @@ import {MatToolbarModule} from '@angular/material/toolbar';
   declarations: [
     AppComponent,
     PostCreateComponent,
-    HeaderComponent
+    HeaderComponent,
+    PostListComponent
   ],
   imports: [
     BrowserModule,
@@ -32,7 +35,8 @@ import {MatToolbarModule} from '@angular/material/toolbar';
     MatInputModule,
     MatCardModule,
     MatButtonModule,
-    MatToolbarModule
+    MatToolbarModule,
+    MatExpansionModule
   ],
   providers: [],
   bootstrap: [AppComponent]
