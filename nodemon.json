@@ -1,0 +1,9 @@
+{
+  "igonore": [
+    "."
+  ],
+  "watch": [
+    "backend/*",
+    "server.js"
+  ]
+}
