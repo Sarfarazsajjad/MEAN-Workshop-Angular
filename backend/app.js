@@ -2,6 +2,7 @@ const express = require('express');
 
 const app = express();
 const bodyParser = require('body-parser');
+const Post = require('./models/post');
 
 app.use(bodyParser.json());
 
@@ -19,8 +20,14 @@ app.use((req, res, next) => {
 });
 
 app.post('/api/posts', (req, res, next)=>{
-  const post = req.body;
+  const post = new Post({
+    title: req.body.title,
+    content: req.body.content
+  })
   console.log(post);
+  post.save((err)=>{
+    if (err) console.log(err);
+  });
   res.status(201).json({
     message: 'post was created successfully'
   });
