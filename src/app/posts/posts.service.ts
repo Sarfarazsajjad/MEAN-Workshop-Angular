@@ -8,18 +8,18 @@ import { HttpClient } from "@angular/common/http"
 })
 export class PostsService {
 
-  constructor(private http: HttpClient){
-    
+  constructor(private http: HttpClient) {
+
   }
   private posts: Post[] = []
   private postsUpdated = new Subject<Post[]>();
   getPosts() {
     this.http.get("http://localhost:3000/api/posts")
-    .subscribe((postData: {message:"string", posts: Post[]})=>{
-      this.posts = postData.posts;
+      .subscribe((postData: { message: "string", posts: Post[] }) => {
+        this.posts = postData.posts;
 
-      this.postsUpdated.next([...this.posts]);
-    })
+        this.postsUpdated.next([...this.posts]);
+      })
   }
 
   getPostUpdateListner() {
@@ -32,7 +32,13 @@ export class PostsService {
       content: content
     }
 
-    this.posts.push(post);
-    this.postsUpdated.next([...this.posts])
+    this.http.post<{ message: string }>("http://localhost:3000/api/posts", post)
+      .subscribe((responseData) => {
+        console.log(responseData);
+
+        this.posts.push(post);
+        this.postsUpdated.next([...this.posts])
+      })
+
   }
 }
