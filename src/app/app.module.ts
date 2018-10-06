@@ -18,6 +18,8 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatExpansionModule} from '@angular/material/expansion'
 import {HttpClientModule} from '@angular/common/http'
+import { routesModule } from './app-routes.module';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 
 @NgModule({
@@ -25,10 +27,12 @@ import {HttpClientModule} from '@angular/common/http'
     AppComponent,
     PostCreateComponent,
     HeaderComponent,
-    PostListComponent
+    PostListComponent,
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,
+    routesModule,
     FormsModule,
     BrowserAnimationsModule,
     MatFormFieldModule,

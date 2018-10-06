@@ -1,1 +1,11 @@
-<mat-toolbar color="primary">My App</mat-toolbar>
+<mat-toolbar color="primary">
+  <span>
+    Messages App
+  </span>
+  <span class="spacer"></span>
+  <nav>
+      <a mat-raised-button routerLink="/messages" routerLinkActive="mat-accent">Messages</a>
+      <a mat-raised-button routerLink="/create" routerLinkActive="mat-accent">Create</a>
+  </nav>
+
+</mat-toolbar>
