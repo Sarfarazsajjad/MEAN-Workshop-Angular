@@ -14,6 +14,10 @@ const appRoutes: Routes = [
     path: 'create',
     component: PostCreateComponent
   },
+  {
+    path: 'edit/:postId',
+    component: PostCreateComponent
+  },
   { path: '',   redirectTo: '/messages', pathMatch: 'full' },
   { path: '**', component: PageNotFoundComponent }
 ]
