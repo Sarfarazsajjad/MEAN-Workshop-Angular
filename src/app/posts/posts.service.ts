@@ -26,8 +26,7 @@ export class PostsService {
     return this.postsUpdated.asObservable();
   }
   getPost(id: string){
-    const post = {...this.posts.find(p => p._id === id)};
-    return post;
+    return this.http.get<Post>('http://localhost:3000/api/posts/'+id);
   }
   addPost(title: string, content: string) {
     let post: Post = {
@@ -49,7 +48,13 @@ export class PostsService {
   updatePost(post: Post){
     this.http
       .put('http://localhost:3000/api/posts/'+post._id, post)
-      .subscribe(response => console.log(response));
+      .subscribe(response => {
+        console.log(response);
+        //this is not required because we are always loading the post list data when the post list component load.
+        //but incase if anything else subscribed to postsUpdated will get latest list after this update.
+        this.posts[this.posts.findIndex((p) => p._id === post._id)] = post;
+        this.postsUpdated.next([...this.posts]);
+      });
   }
 
   deletePost(postId: string){
