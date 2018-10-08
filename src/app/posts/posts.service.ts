@@ -2,13 +2,14 @@ import { Injectable } from "@angular/core";
 import { Post } from "./post.model"
 import { Subject } from "rxjs"
 import { HttpClient } from "@angular/common/http"
+import { Router } from "@angular/router"
 
 @Injectable({
   providedIn: 'root'
 })
 export class PostsService {
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private router: Router) {
 
   }
   private posts: Post[] = []
@@ -41,6 +42,7 @@ export class PostsService {
 
         this.posts.push(responseData.post);
         this.postsUpdated.next([...this.posts])
+        this.router.navigate(['/messages']);
       })
 
   }
@@ -54,6 +56,7 @@ export class PostsService {
         //but incase if anything else subscribed to postsUpdated will get latest list after this update.
         this.posts[this.posts.findIndex((p) => p._id === post._id)] = post;
         this.postsUpdated.next([...this.posts]);
+        this.router.navigate(['/messages']);
       });
   }
 
