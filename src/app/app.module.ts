@@ -22,6 +22,7 @@ import {HttpClientModule} from '@angular/common/http';
 import { routesModule } from './app-routes.module';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { LoginComponent } from './auth/login/login.component';
+import { SignupComponent } from './auth/signup/signup.component';
 
 
 @NgModule({
@@ -31,7 +32,8 @@ import { LoginComponent } from './auth/login/login.component';
     HeaderComponent,
     PostListComponent,
     PageNotFoundComponent,
-    LoginComponent
+    LoginComponent,
+    SignupComponent
   ],
   imports: [
     BrowserModule,
