@@ -2,19 +2,6 @@ const express = require('express');
 const router = express.Router();
 const Post = require('../models/post');
 
-router.use((req, res, next) => {
-  res.setHeader("Access-Control-Allow-Origin", "*");
-  res.setHeader("Access-Control-Allow-Headers",
-    "Origin, X-Requested-with, Content-Type, Accept"
-  );
-
-  res.setHeader("Access-Control-Allow-Methods",
-    "GET, POST, PATCH, PUT, DELETE, OPTIONS"
-  );
-
-  next();
-});
-
 router.post('', (req, res, next) => {
   const post = new Post({
     title: req.body.title,
