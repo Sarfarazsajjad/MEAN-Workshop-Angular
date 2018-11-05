@@ -1,8 +1,9 @@
 const express = require('express');
 const router = express.Router();
 const Post = require('../models/post');
+const checkAuth = require('../middleware/check-auth');
 
-router.post('', (req, res, next) => {
+router.post('',checkAuth, (req, res, next) => {
   const post = new Post({
     title: req.body.title,
     content: req.body.content
@@ -36,7 +37,7 @@ router.get('/:id', (req, res, next) => {
   });
 });
 
-router.put('/:id', (req, res, next) => {
+router.put('/:id',checkAuth, (req, res, next) => {
   const post = new Post({
     _id: req.body._id,
     title : req.body.title,
@@ -49,7 +50,7 @@ router.put('/:id', (req, res, next) => {
   });
 });
 
-router.delete('/:id', (req, res, next)=>{
+router.delete('/:id',checkAuth, (req, res, next)=>{
   Post.deleteOne({_id:req.params.id},(err)=>{
     if(err){
       console.log('error deleting');
