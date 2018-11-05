@@ -5,9 +5,10 @@
   <span class="spacer"></span>
   <nav>
       <a mat-raised-button routerLink="/messages" routerLinkActive="mat-accent">Messages</a>
-      <a mat-raised-button routerLink="/create" routerLinkActive="mat-accent">Create</a>
-      <a mat-raised-button routerLink="/login" routerLinkActive="mat-accent">Login</a>
-      <a mat-raised-button routerLink="/signup" routerLinkActive="mat-accent">Signup</a>
+      <a *ngIf="userIsAuthenticated" mat-raised-button routerLink="/create" routerLinkActive="mat-accent">Create</a>
+      <a *ngIf="!userIsAuthenticated" mat-raised-button routerLink="/login" routerLinkActive="mat-accent">Login</a>
+      <a *ngIf="!userIsAuthenticated" mat-raised-button routerLink="/signup" routerLinkActive="mat-accent">Signup</a>
+      <button mat-raised-button>Logout</button>
   </nav>
 
 </mat-toolbar>
