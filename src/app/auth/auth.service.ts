@@ -7,6 +7,7 @@ import { Subject } from "rxjs";
 export class AuthService {
   private token: string;
   private authListner = new Subject<boolean>();
+  private authenticated:boolean = false;
   constructor(private http: HttpClient) {}
 
   getAuthenticationListener() {
@@ -14,6 +15,9 @@ export class AuthService {
   }
   getToken() {
     return this.token;
+  }
+  isAutenticated(){
+    return this.authenticated;
   }
   createUser(email: string, password: string) {
     const authData: AuthData = { email: email, password: password };
@@ -30,8 +34,11 @@ export class AuthService {
       .post<{ token: string }>("http://localhost:3000/api/user/login", authData)
       .subscribe(response => {
         console.log(response);
-        this.token = response.token;
-        this.authListner.next(true);
+        if(response.token){
+          this.token = response.token;
+          this.authenticated = true;
+          this.authListner.next(true);
+        }
       });
   }
 }
